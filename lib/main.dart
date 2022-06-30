@@ -3,6 +3,7 @@ import 'package:grocery_app/const/theme_data.dart';
 import 'package:grocery_app/provider/theme_%20dark_provider.dart';
 import 'package:grocery_app/screens/dark_theme_pref.dart';
 import 'package:grocery_app/screens/home_screen.dart';
+import 'package:grocery_app/services/btm_bar.dart';
 import 'package:provider/provider.dart';
 
 void main() { 
@@ -44,7 +45,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: Styles.themeData(themeProvider.getDarkTheme, context),
-          home: const HomeScreen(),
+          home: const BottomBarScreen(),
         );
       }),
     );
