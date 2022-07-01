@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:grocery_app/screens/home_screen.dart';
 import 'package:grocery_app/services/cartscreen.dart';
@@ -22,11 +20,11 @@ class BottomBarScreen extends StatefulWidget {
 int _selectedIndex = 0;
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-  final List _pages = [
-    const HomeScreen(),
-    const Categories(),
-    const CartScreen(),
-    const UserScreen()
+  final List<Map<String, dynamic>> _pages = [
+    {'Page': const HomeScreen(), 'title': 'Home Screen'},
+    {'Page': const Categories(), 'title': 'Category Screen'},
+    {'Page': const CartScreen(), 'title': 'Cart Screen'},
+    {'Page': const UserScreen(), 'title': 'User Screen'},
   ];
 
   void _selectedPage(int index) {
@@ -41,7 +39,10 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
     final themeState = Provider.of<DarkThemeProvider>(context);
     bool _isDark = themeState.getDarkTheme;
     return Scaffold(
-      body: _pages[_selectedIndex],
+      // appBar: AppBar(
+      //   title: Text(_pages[_selectedIndex]['title']),
+      // ),
+      body: _pages[_selectedIndex]['Page'],
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor: _isDark ? Theme.of(context).cardColor : Colors.white,
           showSelectedLabels: false,
